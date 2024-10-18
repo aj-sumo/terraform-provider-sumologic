@@ -30,6 +30,7 @@ func resourceSumologicCSEMatchRule() *schema.Resource {
 			"expression": {
 				Type:     schema.TypeString,
 				Required: true,
+                DiffSuppressFunc: suppressSpaceDiff,
 			},
 			"is_prototype": {
 				Type:     schema.TypeBool,

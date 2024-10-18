@@ -168,3 +168,11 @@ func (r *windowSizeField) UnmarshalJSON(data []byte) error {
 	*r = windowSizeField(cleanedData)
 	return nil
 }
+
+// suppressSpaceDiff Suppresses leading and trailing whitespace differences in strings
+func suppressSpaceDiff(_, old, new string, _ *schema.ResourceData) bool {
+	oldNormalized := strings.TrimSpace(old)
+	newNormalized := strings.TrimSpace(new)
+
+	return oldNormalized == newNormalized
+}
